@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:background="#19688B">
+
+        <ImageView
+            android:id="@+id/imgMenu"
+            android:layout_width="58dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:src="@drawable/menu" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Expense Manager"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="@dimen/_18sdp" />
+
+    </LinearLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cdIncome"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:layout_margin="@dimen/_10sdp"
+        app:cardBackgroundColor="#DAF5FF"
+
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:id="@+id/loutIncome"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="51dp"
+                android:layout_margin="@dimen/_10sdp"
+                android:src="@drawable/money3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_14sdp"
+                android:layout_marginTop="@dimen/_19sdp"
+                android:text="ADD INCOME"
+                android:textColor="#19688B"
+                android:textSize="@dimen/_16sdp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cdExpenses"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:cardBackgroundColor="#D4E8FF"
+
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:id="@+id/loutExpenses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="51dp"
+                android:layout_margin="@dimen/_10sdp"
+                android:src="@drawable/cashpayment" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_14sdp"
+                android:layout_marginTop="@dimen/_19sdp"
+                android:text="ADD EXPENSES"
+                android:textColor="#4B80BD"
+                android:textSize="@dimen/_16sdp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cdTransaction"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:cardBackgroundColor="#FFECDD"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="51dp"
+                android:layout_margin="@dimen/_10sdp"
+                android:src="@drawable/document" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_14sdp"
+                android:layout_marginTop="@dimen/_19sdp"
+                android:text="ALL TRANSACTION"
+                android:textColor="#E38A44"
+                android:textSize="@dimen/_16sdp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cdReports"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:cardBackgroundColor="#FFDADB"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="51dp"
+                android:layout_margin="@dimen/_10sdp"
+                android:src="@drawable/bar" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_14sdp"
+                android:layout_marginTop="@dimen/_19sdp"
+                android:text="REPORTS"
+                android:textColor="#FF7175"
+                android:textSize="@dimen/_16sdp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cdCategory"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:layout_marginHorizontal="@dimen/_10sdp"
+        app:cardBackgroundColor="#97EFB6"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:cardElevation="5dp">
+
+        <LinearLayout
+            android:id="@+id/loutCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="51dp"
+                android:layout_margin="@dimen/_10sdp"
+                android:src="@drawable/category2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_14sdp"
+                android:layout_marginTop="@dimen/_19sdp"
+                android:text="CATEGORY"
+                android:textColor="#3CD370"
+                android:textSize="@dimen/_16sdp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>
