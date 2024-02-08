@@ -21,34 +21,66 @@ class TransactionActivity : AppCompatActivity() {
     lateinit var transactionBinding: ActivityTransactionBinding  //activity biding
 
     var listTransaction =
-        ArrayList<IncomeExpenseModelClass>()  //create  array list  and set model class
+        ArrayList<IncomeExpenseModelClass>()
+  //  var dbHelper = SqLiteHelperData(this)
 
-    lateinit var adapter1: TransactionAdapter  //define  adapter class
-    lateinit var dbT: SqLiteHelperData   // define  data base class
+    lateinit var adapter1: TransactionAdapter
+    lateinit var dbT: SqLiteHelperData
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         transactionBinding = ActivityTransactionBinding.inflate(layoutInflater)
-        setContentView(transactionBinding.root)   //set xml file
+        setContentView(transactionBinding.root)
 
-        dbT = SqLiteHelperData(this)  // set context class in sqlite
+   // var dbHelper = SqLiteHelperData(this)
+       // dbHelper.fetchTotalAmounts()
+
+        dbT = SqLiteHelperData(this)
         initView()
         amount()
+
     }
+
+
 
     private fun amount() {
-//        var incomeAmount=transactionBinding.txtIncome.text
-//        var expenseAmount=transactionBinding.txtExpense.text
-//        incomeAmount= adapter1.incomeFunction().toString()
+        var totalIncome = 0.0
+        var totalExpense = 0.0
 
-//        Log.e("tra", "incomeAmount: $incomeAmount")
-//        expenseAmount=adapter1.expenseFunction().toString()
-//        Log.e("tra", "expenseAmount: $expenseAmount")
+        // Iterate through the list of transactions to calculate the total income and expense
+        for (transaction in listTransaction) {
+            val amount = transaction.amount.toDoubleOrNull() ?: 0.0// Convert to Double or default to 0.0 if conversion fails
+
+            if (transaction.page == "Income") {
+                totalIncome += amount
+            } else if (transaction.page == "Expense") {
+                totalExpense += amount
+            }
+        }
+
+        // Set the calculated values to the corresponding TextViews
+        transactionBinding.txtIncome.text = totalIncome.toString()
+        transactionBinding.txtExpense.text = totalExpense.toString()
+
+        Log.e("tra", "totalIncome: $totalIncome")
+        Log.e("tra", "totalExpense: $totalExpense")
+
+        val txtTotal = totalIncome - totalExpense // Assuming you want to store the difference between income and expense
+        transactionBinding.txtTotal.text = txtTotal.toString()
+
+        // Now you can use txtTotal as needed
+        Log.e("tra", "txtTotal: $txtTotal")
     }
+
+
+
+
+
+
 
     private fun initView() {
         transactionBinding.imgBack.setOnClickListener {
-            var i = Intent(this, MainActivity::class.java)    //this activity to MainActivity Move
+            var i = Intent(this, MainActivity::class.java)
             startActivity(i)
             finish()
         }
@@ -68,8 +100,8 @@ class TransactionActivity : AppCompatActivity() {
             i.putExtra("iconName", iconeName)
             i.putExtra("updateRecord", true)   //data update key pass in addScreen Activity
             startActivity(i)
-            Log.e("TAG", "sanjay_ID: " + it.id)
-            Log.e("TAG", "sanjay_AMOUNT: " + it.amount)
+            Log.e("TAG", "ID: " + it.id)
+            Log.e("TAG", "AMOUNT: " + it.amount)
 
         }, { id ->                //use invoke for  delete record
 
@@ -81,6 +113,7 @@ class TransactionActivity : AppCompatActivity() {
             dialogBinding.btnSet.setOnClickListener {
 
                 dbT.deleteData(id)
+
                 Toast.makeText(this, "delete record success", Toast.LENGTH_SHORT).show()
                 listTransaction = dbT.displayTransact()
                 adapter1.updateData(listTransaction)
@@ -100,8 +133,8 @@ class TransactionActivity : AppCompatActivity() {
             dialog.show()
 
         })
-        var manger1 = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        transactionBinding.recycleTransaction.layoutManager = manger1
+        var manger = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        transactionBinding.recycleTransaction.layoutManager = manger
         transactionBinding.recycleTransaction.adapter = adapter1
 
         listTransaction = dbT.displayTransact()

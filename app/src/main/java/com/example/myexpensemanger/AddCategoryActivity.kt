@@ -31,21 +31,25 @@ class AddCategoryActivity : AppCompatActivity() {
             startActivity(i)
             finish()
         }
+//        addCategoryBinding.imgDone.setOnClickListener {
+//
+//
+//
+//        }
         addCategoryBinding.imgDone.setOnClickListener {
+            var categoryName = addCategoryBinding.edtAddCategory.text.toString()  //EditText value store this  variable
+
+             //data base class in store value
+
+            db.insertCategory(categoryName)
+
             Toast.makeText(this, "Your category is added successfully", Toast.LENGTH_SHORT).show()
             var i = Intent(this, MainActivity::class.java)   //this activity to MainActivity Move
             startActivity(i)
             finish()
+
+            addCategoryBinding.edtAddCategory.setText("")  //clear Edit text value
         }
-//        addCategoryBinding.btnAdd.setOnClickListener {
-//            var categoryName = addCategoryBinding.edtAddCategory.text.toString()  //EditText value store this  variable
-//
-//            db.insertCategory(categoryName)  //data base class in store value
-//
-//
-//
-//            addCategoryBinding.edtAddCategory.setText("")  //clear Edit text value
-//        }
         val list = db.displayCategory()  //show data base in this class
 
         val adapter = AddCategoryAdapter()  //set adapter class

@@ -1,5 +1,7 @@
 package com.example.myexpensemanger.modelclass
 
+
+
 data class CategoryModelClass(var categoryName: String)
 
 data class IncomeExpenseModelClass(

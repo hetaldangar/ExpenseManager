@@ -12,6 +12,8 @@ class SqLiteHelperData(context: Context) : SQLiteOpenHelper(context, "categoryDB
     var categoryList = ArrayList<CategoryModelClass>()
     var transactionList = ArrayList<IncomeExpenseModelClass>()
 
+//    private val dbHelper = SqLiteHelperData(context)
+
 
     override fun onCreate(db: SQLiteDatabase?) {
         var sql =
@@ -25,7 +27,7 @@ class SqLiteHelperData(context: Context) : SQLiteOpenHelper(context, "categoryDB
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        TODO("Not yet implemented")
+
     }
 
 
@@ -142,4 +144,37 @@ class SqLiteHelperData(context: Context) : SQLiteOpenHelper(context, "categoryDB
         db.execSQL(delete)
 
     }
+
+
+//    fun calculateTotalIncome(): Int {
+//        var totalIncome = 0
+//        val db = readableDatabase
+//        val sql = "SELECT SUM(amount) FROM transactTb WHERE page = 'Income'"
+//        val cursor = db.rawQuery(sql, null)
+//
+//        if (cursor.moveToFirst()) {
+//            totalIncome = cursor.getInt(0)
+//        }
+//
+//        cursor.close()
+//        return totalIncome
+//    }
+//
+//    // Calculate total expenses
+//    fun calculateTotalExpenses(): Int {
+//        var totalExpenses = 0
+//        val db = readableDatabase
+//        val sql = "SELECT SUM(amount) FROM transactTb WHERE page = 'Expense'"
+//        val cursor = db.rawQuery(sql, null)
+//
+//        if (cursor.moveToFirst()) {
+//            totalExpenses = cursor.getInt(0)
+//        }
+//
+//        cursor.close()
+//        return totalExpenses
+//    }
 }
+
+
+

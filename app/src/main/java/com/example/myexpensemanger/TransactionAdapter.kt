@@ -87,14 +87,14 @@ class TransactionAdapter(
     }
 
     fun incomeFunction(income: Int): Int {
-        var valueIncome= income
-        Log.e("function", "income: "+valueIncome )
+        var valueIncome = income
+        Log.e("function", "income: " + valueIncome)
         return valueIncome
 
     }
 
     fun expenseFunction(): Int {
-        Log.e("function", "expense: "+expense )
+        Log.e("function", "expense: " + expense)
         return expense
 
 

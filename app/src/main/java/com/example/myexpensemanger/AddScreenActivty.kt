@@ -44,7 +44,7 @@ class AddScreenActivty : AppCompatActivity() {
         if (intent != null && intent.hasExtra("updateRecord")) {
             flag = 1
             id_number = intent.getIntExtra("id_no", 0)
-            // Retrieve other intent data as needed
+
         }
 
         initView()
@@ -54,22 +54,40 @@ class AddScreenActivty : AppCompatActivity() {
         categoryDialogData()
         dataAndTime()
         paymentMode()
+        page = intent.getStringExtra("Page").toString()
+        when (page) {  // variable set in when statement
 
-        var data = intent.getIntExtra("Type", 0)
+            "income" -> {
+                addScreenBinding.rbIncome.isChecked = true
+                addScreenBinding.txtTitle.text = "Add Income"
 
-        if (data == 0) {
-            addScreenBinding.rbIncome.isChecked = true
-            addScreenBinding.txtTitle.text = "Add Income"
-        } else if (data == 1) {
-            addScreenBinding.rbExpense.isChecked = true
-            addScreenBinding.txtTitle.text = "Add Expense"
+            }
+
+            "expense" -> {
+                addScreenBinding.rbExpense.isChecked = true
+                addScreenBinding.txtTitle.text = "Add Expense"
+            }
+
         }
+
+
+//        var data = intent.getIntExtra("Type",0)
+//
+//        if (data == 0) {
+//            addScreenBinding.rbIncome.isChecked = true
+//            addScreenBinding.txtTitle.text = "Add Income"
+//        } else if (data == 1) {
+//            addScreenBinding.rbExpense.isChecked = true
+//            addScreenBinding.txtTitle.text = "Add Expense"
+//        }
 
         addScreenBinding.imgBack.setOnClickListener {
             val i = Intent(this, MainActivity::class.java)
             startActivity(i)
             finish()
         }
+
+
 
         addScreenBinding.imgDone.setOnClickListener {
             val amount = addScreenBinding.edtAmount.text.toString()
@@ -97,6 +115,8 @@ class AddScreenActivty : AppCompatActivity() {
                 Toast.makeText(this, "Your Data Saved", Toast.LENGTH_SHORT).show()
             }
         }
+
+
     }
 
     private fun categoryDialogData() {
@@ -106,6 +126,8 @@ class AddScreenActivty : AppCompatActivity() {
             val dialog = createCategoryDialog()
             dialog.show()
         }
+
+
     }
 
     private fun createCategoryDialog(): Dialog {
@@ -114,6 +136,7 @@ class AddScreenActivty : AppCompatActivity() {
         dialog.setContentView(dialogBinding.root)
 
         val list = dbS.displayCategory()
+
 
         val adapter = DialogCategoryAdapter(list) { categoryName ->
             Log.e("TAG", "categoryDialogData: $categoryName")

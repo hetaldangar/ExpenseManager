@@ -43,9 +43,6 @@ class DialogCategoryAdapter(var list: ArrayList<CategoryModelClass>, var n: (Str
 
         holder.rbCategory.isChecked = position == pos  //radio button position set
 
-//        holder.layDialog.setOnClickListener {
-//
-//        }
 
     }
 
